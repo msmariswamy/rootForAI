@@ -39,20 +39,6 @@
     </div>
   </footer>
 <script>
-(() => {
-  const toggle = document.getElementById('theme-toggle');
-  const current = localStorage.getItem('theme') || 'light';
-  document.documentElement.dataset.theme = current;
-  toggle.textContent = current === 'dark' ? '☀️' : '🌙';
-  toggle.addEventListener('click', () => {
-    const newTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.dataset.theme = newTheme;
-    localStorage.setItem('theme', newTheme);
-    toggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-  });
-})();
-</script>
-<script>
 (function(){
   const themeToggle = document.getElementById('theme-toggle');
   const saved = localStorage.getItem('theme') || 'light';

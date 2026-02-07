@@ -6,7 +6,7 @@ hero: true
 ---
 
 <div class="path-selector" id="paths">
-  <h2 style="margin: 0 0 1.5rem;">Choose Your Learning Path</h2>
+  <h2>Choose Your Learning Path</h2>
   <div>
     {% for p in site.learning_paths %}
     <a href="{{ '/learning_paths/' | relative_url }}{{ p.id }}" class="path-card">
@@ -18,18 +18,18 @@ hero: true
   </div>
 </div>
 
-<div class="topics-grid" id="topics" style="margin-top: 3rem;">
-  <h2 style="margin-bottom: 1.5rem;">Explore Topics</h2>
+<div class="topics-grid" id="topics">
+  <h2>Explore Topics</h2>
   {% for topic in site.topics %}
-  <a href="{{ '/topics/' | relative_url }}{{ topic.id }}" class="topic-card" style="border-left-color: {{ topic.color }};">
-    <h3 style="color: {{ topic.color }};">{{ topic.title }}</h3>
+  <a href="{{ '/topics/' | relative_url }}{{ topic.id }}" class="topic-card">
+    <h3>{{ topic.title }}</h3>
     <p>View all {{ topic.title }} articles</p>
   </a>
   {% endfor %}
 </div>
 
-<div id="recent-posts" style="margin-top: 3rem;">
-  <h2 style="margin-bottom: 1.5rem;">Recent Posts</h2>
+<div id="recent-posts">
+  <h2>Recent Posts</h2>
   <div class="posts-list">
     {% for post in site.posts limit: 6 %}
     <a href="{{ post.url | relative_url }}" class="post-card">
@@ -47,5 +47,5 @@ hero: true
     </a>
     {% endfor %}
   </div>
-  <a href="{{ '/blog' | relative_url }}" style="display: inline-block; margin-top: 1.5rem; color: #3498db; text-decoration: none;">View all posts &rarr;</a>
+  <a href="{{ '/blog' | relative_url }}" class="btn">View all posts &rarr;</a>
 </div>
