@@ -1,9 +1,6 @@
 # Site settings
 title: AI Learning Platform
 description: Your pathway to mastering Artificial Intelligence
-theme: minima
-plugins:
-  - jekyll-feed
 
 # URL settings for GitHub Pages
 url: "https://msmariswamy.github.io"
