@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<div class="container" style="margin-top: 2rem;">
+<div class="container" style="margin-top: 2rem; max-width: 800px;">
   <!-- Breadcrumb -->
   <nav class="breadcrumb">
     <a href="{{ '/' | relative_url }}">Home</a>
@@ -12,70 +12,41 @@ layout: default
     <span>{{ page.title }}</span>
   </nav>
 
-  <div style="padding: 2rem; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08);">
+  <div style="padding: 2rem; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
     <!-- Post Header -->
-    <h1 style="font-size: 2.25rem; margin-bottom: 1rem; color: #2c3e50;">{{ page.title }}</h1>
+    <h1 style="font-size: 1.8rem; margin-bottom: 1rem; color: #2c3e50;">{{ page.title }}</h1>
 
     <!-- Post Meta -->
-    <div style="color: #666; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+    <div style="color: #666; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; font-size: 0.9rem;">
       <span>{{ page.date | date: "%B %-d, %Y" }}</span>
       {% if page.path_type %}
-      <span style="margin-left: 1rem; padding: 0.25rem 0.75rem; background: #ebdef0; color: #8e44ad; border-radius: 20px; font-size: 0.75rem;">{{ page.path_type | capitalize }} Path</span>
+      <span style="margin-left: 1rem; padding: 0.25rem 0.5rem; background: #f1f8ff; border-radius: 10px; font-size: 0.7rem;">{{ page.path_type | capitalize }} Path</span>
       {% endif %}
       {% if page.read_time %}
-      <span style="margin-left: 1rem; display: flex; align-items: center; gap: 0.25rem;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="10"></circle>
-          <polyline points="12 6 12 12 16 14"></polyline>
-        </svg>
-        {{ page.read_time }} min read
-      </span>
+      <span style="margin-left: 1rem;">{{ page.read_time }} min read</span>
       {% endif %}
     </div>
 
     <!-- Post Content -->
-    <div style="line-height: 1.8; font-size: 1.05rem;">
+    <div style="line-height: 1.7; font-size: 1rem;">
       {{ content }}
     </div>
 
     <!-- Tags -->
+    {% if page.categories.size > 0 %}
     <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #eee;">
-      <h4 style="margin-bottom: 1rem;">Topics</h4>
+      <h4 style="margin-bottom: 0.75rem; font-size: 1rem;">Topics</h4>
       <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
         {% for category in page.categories %}
-        <span style="padding: 0.25rem 0.75rem; background: #ecf0f1; border-radius: 20px; font-size: 0.75rem; color: #34495e;">{{ category }}</span>
+        <span style="padding: 0.25rem 0.5rem; background: #f8f9fa; border-radius: 10px; font-size: 0.75rem; color: #34495e;">{{ category }}</span>
         {% endfor %}
       </div>
     </div>
-  </div>
-
-  <!-- Author Box -->
-  <div style="margin-top: 2rem; padding: 1.5rem; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); display: flex; gap: 1rem; align-items: center;">
-    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #3498db, #2ecc71); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: bold;">AI</div>
-    <div>
-      <h4 style="margin-bottom: 0.25rem;">About the Author</h4>
-      <p style="margin: 0; font-size: 0.9rem; color: #666;">Passionate about making AI education accessible to everyone. Sharing knowledge and resources to help you master AI concepts.</p>
-    </div>
-  </div>
-
-  <!-- Related Posts -->
-  <div class="related-posts">
-    <h3>Related Articles</h3>
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem;">
-      {% assign related_posts = site.posts | where_exp: "post", "post.categories contains page.categories[0]" | limit: 3 %}
-      {% for post in related_posts %}
-      {% if post.url != page.url %}
-      <a href="{{ post.url | relative_url }}" style="background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-decoration: none; color: #333; transition: transform 0.3s;">
-        <h4 style="margin-bottom: 0.5rem; font-size: 1rem;">{{ post.title }}</h4>
-        <p style="font-size: 0.85rem; color: #666; margin: 0;">{{ post.excerpt | strip_html | truncate: 100 }}</p>
-      </a>
-      {% endif %}
-      {% endfor %}
-    </div>
+    {% endif %}
   </div>
 
   <!-- Back to Blog -->
-  <div style="text-align: center; margin-top: 2rem; padding: 1.5rem;">
-    <a href="{{ '/blog' | relative_url }}" class="btn">← Back to Blog</a>
+  <div style="text-align: center; margin-top: 2rem; padding: 1rem;">
+    <a href="{{ '/blog' | relative_url }}" style="color: #3498db; text-decoration: none; font-size: 0.9rem;">← Back to Blog</a>
   </div>
 </div>

@@ -5,47 +5,43 @@ description: Your pathway to mastering Artificial Intelligence with structured l
 hero: true
 ---
 
-<div class="path-selector" id="paths">
-  <h2>Choose Your Learning Path</h2>
-  <div>
-    {% for p in site.learning_paths %}
-    <a href="{{ '/learning_paths/' | relative_url }}{{ p.id }}" class="path-card">
-      <span class="icon">{{ p.icon }}</span>
-      <h3>{{ p.title }}</h3>
-      <p>{{ p.description }}</p>
-    </a>
-    {% endfor %}
-  </div>
-</div>
+<div class="container">
 
-<div class="topics-grid" id="topics">
-  <h2>Explore Topics</h2>
-  {% for topic in site.topics %}
-  <a href="{{ '/topics/' | relative_url }}{{ topic.id }}" class="topic-card">
-    <h3>{{ topic.title }}</h3>
-    <p>View all {{ topic.title }} articles</p>
-  </a>
-  {% endfor %}
-</div>
-
-<div id="recent-posts">
-  <h2>Recent Posts</h2>
-  <div class="posts-list">
-    {% for post in site.posts limit: 6 %}
-    <a href="{{ post.url | relative_url }}" class="post-card">
-      <h3>{{ post.title }}</h3>
-      <div class="meta">{{ post.date | date: "%b %-d, %Y" }}</div>
-      <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
-      <div class="tags">
-        {% if post.path_type %}
-        <span class="tag tag-{{ post.path_type }}">{{ post.path_type | capitalize }}</span>
-        {% endif %}
-        {% for cat in post.categories limit: 2 %}
-        <span class="tag">{{ cat }}</span>
-        {% endfor %}
-      </div>
-    </a>
-    {% endfor %}
+  <div style="text-align: center; margin-bottom: 3rem;">
+    <h2 style="margin-bottom: 1rem;">Welcome to AI Learning Platform</h2>
+    <p style="color: #666; max-width: 600px; margin: 0 auto;">Learn artificial intelligence through structured paths and practical examples</p>
   </div>
-  <a href="{{ '/blog' | relative_url }}" class="btn">View all posts &rarr;</a>
+
+  <div id="recent-posts" style="margin-bottom: 3rem;">
+    <h2 style="margin-bottom: 1.5rem; text-align: center;">Latest Articles</h2>
+    <div style="background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+      {% for post in site.posts limit: 5 %}
+      <article style="margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid #eee;">
+        <h3 style="margin-bottom: 0.5rem; font-size: 1.2rem;">
+          <a href="{{ post.url | relative_url }}" style="color: #2c3e50; text-decoration: none;">{{ post.title }}</a>
+        </h3>
+        <div style="color: #666; font-size: 0.85rem; margin-bottom: 0.5rem;">{{ post.date | date: "%B %-d, %Y" }}</div>
+        <p style="margin: 0; color: #555;">{{ post.excerpt | strip_html | truncate: 150 }}</p>
+      </article>
+      {% endfor %}
+    </div>
+    <div style="text-align: center; margin-top: 1.5rem;">
+      <a href="{{ '/blog' | relative_url }}" style="color: #3498db; text-decoration: none;">View all articles &rarr;</a>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 3rem;">
+    <h2 style="margin-bottom: 1.5rem;">Learning Paths</h2>
+    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+      {% for p in site.learning_paths %}
+      <a href="{{ '/learning_paths/' | relative_url }}{{ p.id }}"
+         style="padding: 1rem 1.5rem; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-decoration: none; color: #2c3e50; min-width: 200px;">
+        <span style="font-size: 2rem; display: block; margin-bottom: 0.5rem;">{{ p.icon }}</span>
+        <h3 style="margin-bottom: 0.5rem;">{{ p.title }}</h3>
+        <p style="font-size: 0.9rem; color: #666;">{{ p.description }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
 </div>
