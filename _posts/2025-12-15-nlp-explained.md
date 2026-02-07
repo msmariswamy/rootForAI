@@ -11,6 +11,10 @@ read_time: 14
 
 Explore how computers understand and generate human language.
 
+![NLP illustration](/assets/images/nlp.jpg)
+
+![NLP illustration](/assets/images/nlp.jpg)
+
 ## What is NLP?
 
 Natural Language Processing (NLP) is a field of AI that focuses on the interaction between computers and human language.

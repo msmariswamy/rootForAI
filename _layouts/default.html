@@ -9,6 +9,7 @@
 <body>
   <header>
     <div class="container nav-links">
+      <button id="theme-toggle" aria-label="Toggle dark mode" style="background:none;border:none;color:inherit;font-size:1.2rem;cursor:pointer;">🌙</button>
       <a href="{{ '/' | relative_url }}" style="font-weight: 700; font-size: 1.1rem;">AI Learning Platform</a>
       <a href="{{ '/' | relative_url }}#paths">Paths</a>
       <a href="{{ '/' | relative_url }}#topics">Topics</a>
@@ -37,5 +38,41 @@
       <p style="margin-top: 0.5rem; opacity: 0.7;">Powered by GitHub Pages</p>
     </div>
   </footer>
+<script>
+(() => {
+  const toggle = document.getElementById('theme-toggle');
+  const current = localStorage.getItem('theme') || 'light';
+  document.documentElement.dataset.theme = current;
+  toggle.textContent = current === 'dark' ? '☀️' : '🌙';
+  toggle.addEventListener('click', () => {
+    const newTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = newTheme;
+    localStorage.setItem('theme', newTheme);
+    toggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+  });
+})();
+</script>
+<script>
+(function(){
+  const themeToggle = document.getElementById('theme-toggle');
+  const saved = localStorage.getItem('theme') || 'light';
+  if (saved === 'dark') document.documentElement.setAttribute('data-theme','dark');
+  if (themeToggle) {
+    themeToggle.textContent = saved === 'dark' ? '☀️' : '🌙';
+    themeToggle.addEventListener('click',()=>{
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme','light');
+        themeToggle.textContent='🌙';
+      } else {
+        document.documentElement.setAttribute('data-theme','dark');
+        localStorage.setItem('theme','dark');
+        themeToggle.textContent='☀️';
+      }
+    });
+  }
+})();
+</script>
 </body>
 </html>

@@ -11,6 +11,10 @@ read_time: 15
 
 Dive into the world of neural networks and understand how they power modern AI.
 
+![Neural Network illustration](/assets/images/neural-network.jpg)
+
+![Neural Network illustration](/assets/images/neural-networks.jpg)
+
 ## What is a Neural Network?
 
 A neural network is a computing system inspired by biological neural networks that form animal brains.

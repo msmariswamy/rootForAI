@@ -11,6 +11,10 @@ read_time: 16
 
 Learn how generative models create text, images, and more from scratch.
 
+![Generative AI illustration](/assets/images/generative-ai.jpg)
+
+![Generative AI illustration](/assets/images/generative-ai.jpg)
+
 ## What is Generative AI?
 
 Generative AI creates new content that resembles human-created data.

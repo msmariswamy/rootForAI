@@ -11,6 +11,10 @@ read_time: 18
 
 Choosing the right deep learning framework is crucial for your AI projects. Learn about the differences between TensorFlow, PyTorch, and Keras.
 
+![Deep Learning Frameworks illustration](/assets/images/deep-learning-frameworks.jpg)
+
+![Deep Learning Frameworks illustration](/assets/images/deep-learning-frameworks.jpg)
+
 ## Overview
 
 | Framework | Release | Main Owner | Primary Use Case |

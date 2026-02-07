@@ -12,6 +12,10 @@ read_time: 20
 
 The Transformer architecture has revolutionized Natural Language Processing and beyond. Learn how attention mechanisms changed everything.
 
+![Transformer illustration](/assets/images/transformer.jpg)
+
+![Transformer illustration](/assets/images/transformer.jpg)
+
 ## Introduction
 
 The Transformer, introduced in the paper "Attention Is All You Need" (2017), replaced recurrent neural networks as the dominant architecture for NLP tasks.

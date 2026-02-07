@@ -12,6 +12,10 @@ read_time: 15
 
 Python is the most popular programming language for AI and Machine Learning. Learn about the essential tools and libraries you need to get started.
 
+![Python AI illustration](/assets/images/python-ai.jpg)
+
+![Python AI illustration](/assets/images/python-ai.jpg)
+
 ## Why Python for AI?
 
 Python's simplicity and extensive ecosystem make it the go-to language for AI development:

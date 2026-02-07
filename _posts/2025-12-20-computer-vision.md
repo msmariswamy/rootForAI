@@ -11,6 +11,10 @@ read_time: 13
 
 How computers interpret and understand visual information from the world.
 
+![Computer Vision illustration](/assets/images/computer-vision.jpg)
+
+![Computer Vision illustration](/assets/images/computer-vision.jpg)
+
 ## What is Computer Vision?
 
 Computer vision enables machines to interpret and understand digital images and videos.

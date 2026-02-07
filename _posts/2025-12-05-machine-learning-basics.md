@@ -11,6 +11,10 @@ read_time: 12
 
 Learn the two main approaches to machine learning and when to use each one.
 
+![Machine Learning illustration](/assets/images/ml-basics.jpg)
+
+![Machine Learning diagram](/assets/images/ml-basics.jpg)
+
 ## Supervised Learning
 
 Supervised learning uses labeled data to train models. The algorithm learns to map inputs to known outputs.
