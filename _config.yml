@@ -2,9 +2,24 @@
 title: AI Learning Platform
 description: Your pathway to mastering Artificial Intelligence
 
+# Author
+author:
+  name: AI Learning Platform
+  bio: "Passionate about making AI education accessible to everyone. Sharing knowledge and resources to help you master AI concepts."
+  avatar: /assets/images/avatar.png
+
 # URL settings for GitHub Pages
 url: "https://msmariswamy.github.io"
 baseurl: "/rootForAI"
+
+# Social links
+social:
+  github: msmariswamy
+  twitter: ""
+
+# Pagination
+paginate: 6
+paginate_path: "/blog/page/:num/"
 
 # Learning paths
 learning_paths:
@@ -42,7 +57,22 @@ topics:
     title: AI Ethics
     color: "#34495e"
 
+# Reading time calculation (words per minute)
+words_per_minute: 200
+
 # Build settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -51,3 +81,15 @@ exclude:
   - .git
   - .claude
   - PROJECT.md
+  - _config_github.yml
+
+# SEO
+lang: en_US
+twitter:
+  username: ""
+  card: summary_large_image
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/og-image.png

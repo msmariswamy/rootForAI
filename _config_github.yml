@@ -2,11 +2,22 @@
 remote_theme: pages-themes/minimal
 plugins:
   - jekyll-remote-theme
+  - jekyll-paginate
   - jekyll-feed
+  - jekyll-sitemap
 
 title: AI Learning Platform
 description: Your pathway to mastering Artificial Intelligence
 theme_color: "#2c3e50"
+
+# Author
+author:
+  name: AI Learning Platform
+  bio: "Passionate about making AI education accessible to everyone. Sharing knowledge and resources to help you master AI concepts."
+
+# Pagination
+paginate: 6
+paginate_path: "/blog/page/:num/"
 
 # Custom learning paths configuration
 learning_paths:
@@ -43,3 +54,13 @@ topics:
   - id: ethics
     title: AI Ethics
     color: "#34495e"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Reading time calculation (words per minute)
+words_per_minute: 200
