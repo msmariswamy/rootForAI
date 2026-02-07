@@ -2,28 +2,17 @@
 layout: default
 ---
 
-<div class="container">
-  <div class="breadcrumb">
-    <a href="/">Home</a> &rsaquo;
-    {% if page.path_type %}
-    <a href="/learning_paths/{{ page.path_type }}">{{ page.path_type | capitalize }} Path</a> &rsaquo;
-    {% endif %}
-    <span>{{ page.title }}</span>
-  </div>
-
-  <article style="margin-top: 2rem; background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-    <h1 style="margin-bottom: 1rem;">{{ page.title }}</h1>
-    <div class="meta" style="color: #666; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
+<div class="container" style="margin-top: 2rem;">
+  <div style="padding: 2rem; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.08);">
+    <h1>{{ page.title }}</h1>
+    <div style="color: #666; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid #eee;">
       <span>{{ page.date | date: "%B %-d, %Y" }}</span>
-      {% if page.read_time %}
-      <span style="margin-left: 1rem;">{{ page.read_time }} min read</span>
-      {% endif %}
       {% if page.path_type %}
-      <span class="tag path-tag-{{ page.path_type }}" style="margin-left: 1rem;">{{ page.path_type | capitalize }} Path</span>
+      <span style="margin-left: 1rem; padding: 0.25rem 0.75rem; background: #ebdef0; color: #8e44ad; border-radius: 20px; font-size: 0.75rem;">{{ page.path_type | capitalize }} Path</span>
       {% endif %}
     </div>
 
-    <div class="content" style="line-height: 1.8;">
+    <div style="line-height: 1.8;">
       {{ content }}
     </div>
 
@@ -31,52 +20,9 @@ layout: default
       <h4 style="margin-bottom: 1rem;">Tags</h4>
       <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
         {% for category in page.categories %}
-        <a href="/topics/{{ category | slugize }}" class="tag" style="background: var(--light); text-decoration: none; padding: 0.25rem 0.75rem; border-radius: 20px; color: var(--secondary);">{{ category }}</a>
+        <span style="padding: 0.25rem 0.75rem; background: #ecf0f1; border-radius: 20px; font-size: 0.75rem; color: #34495e;">{{ category }}</span>
         {% endfor %}
       </div>
-
-      {% if page.next_post or page.previous_post %}
-      <div style="margin-top: 2rem; display: flex; justify-content: space-between;">
-        {% if page.previous_post %}
-        <a href="{{ page.previous_post.url }}" style="text-decoration: none; color: var(--secondary);">
-          &larr; {{ page.previous_post.title }}
-        </a>
-        {% endif %}
-        {% if page.next_post %}
-        <a href="{{ page.next_post.url }}" style="text-decoration: none; color: var(--secondary); text-align: right;">
-          {{ page.next_post.title }} &rarr;
-        </a>
-        {% endif %}
-      </div>
-      {% endif %}
-    </div>
-  </article>
-
-  <div style="margin-top: 2rem;">
-    <h3 style="margin-bottom: 1rem;">Explore More</h3>
-    <div class="posts-list">
-      {% assign related = site.posts | where: 'path_type', page.path_type | where: 'categories', page.categories | shuffle | limit: 3 %}
-      {% for post in related %}
-      {% if post.url != page.url %}
-      <a href="{{ post.url | relative_url }}" class="post-card">
-        <h3>{{ post.title }}</h3>
-        <div class="meta">{{ post.date | date: "%B %-d, %Y" }}</div>
-        <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
-      </a>
-      {% endif %}
-      {% endfor %}
     </div>
   </div>
 </div>
-
-<style>
-  .content h2 { margin-top: 2rem; margin-bottom: 1rem; border-bottom: 2px solid var(--light); padding-bottom: 0.5rem; }
-  .content h3 { margin-top: 1.5rem; margin-bottom: 0.75rem; }
-  .content p { margin-bottom: 1rem; }
-  .content ul, .content ol { margin-bottom: 1rem; padding-left: 2rem; }
-  .content blockquote { border-left: 4px solid var(--accent); margin: 1rem 0; padding: 0.5rem 1rem; background: var(--light); }
-  .content code { background: var(--light); padding: 0.2rem 0.5rem; border-radius: 3px; font-family: monospace; }
-  .content pre { background: #2d2d2d; color: #f8f8f2; padding: 1rem; border-radius: 5px; overflow-x: auto; }
-  .content pre code { background: transparent; color: inherit; }
-  .content img { max-width: 100%; height: auto; border-radius: 5px; margin: 1rem 0; }
-</style>
