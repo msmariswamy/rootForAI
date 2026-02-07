@@ -232,6 +232,14 @@ header {
 .path-tag-intermediate { background: #fdedc7; color: #f39c12; }
 .path-tag-advanced { background: #ebdef0; color: #8e44ad; }
 
+#recent-posts {
+  margin-top: 3rem;
+}
+
+#recent-posts h2 {
+  margin-bottom: 1.5rem;
+}
+
 /* Footer */
 footer {
   background: var(--header-bg);
