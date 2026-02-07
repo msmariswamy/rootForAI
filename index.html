@@ -1,108 +1,189 @@
 ---
-layout: default
 title: AI Learning Platform
-description: Your pathway to mastering Artificial Intelligence with structured learning paths from beginner to advanced
+description: Your pathway to mastering Artificial Intelligence
 ---
 
-<div class="container">
-  <div class="path-selector" id="paths">
-    <h2 style="margin: 0 0 1.5rem;">Choose Your Learning Path</h2>
-    <div style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
-      {% for p in site.learning_paths %}
-      <a href="{{ '/rootForAI/learning_paths/' | relative_url }}{{ p.id }}" class="path-card">
-        <span class="icon">{{ p.icon }}</span>
-        <h3>{{ p.title }}</h3>
-        <p>{{ p.description }}</p>
-      </a>
-      {% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Learning Platform</title>
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --accent: #3498db;
+      --beginner: #27ae60;
+      --intermediate: #f39c12;
+      --advanced: #8e44ad;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f8f9fa;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    header {
+      background: var(--primary); color: white; padding: 1rem 0;
+    }
+    .nav-links { display: flex; justify-content: center; gap: 2rem; align-items: center; }
+    .nav-links a { color: white; text-decoration: none; }
+    .nav-links a:hover { color: var(--accent); }
+    .hero {
+      background: linear-gradient(135deg, var(--primary), #34495e);
+      color: white; padding: 3rem 0; text-align: center;
+    }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.2rem; opacity: 0.9; }
+    .path-selector { display: flex; justify-content: center; gap: 1.5rem; margin: 2rem 0; flex-wrap: wrap; }
+    .path-card {
+      background: white; padding: 1.5rem; border-radius: 12px; text-align: center;
+      flex: 1; min-width: 280px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s; text-decoration: none; color: #333;
+    }
+    .path-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
+    .path-card .icon { font-size: 3rem; margin-bottom: 0.5rem; display: block; }
+    .path-card h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+    .path-card p { color: #666; font-size: 0.9rem; }
+    .topics-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; }
+    .topic-card {
+      background: white; padding: 1rem; border-radius: 8px; text-align: center;
+      text-decoration: none; color: #333; border-left: 4px solid var(--accent);
+    }
+    .topic-card:hover { background: #f1f8ff; }
+    .topic-card h3 { margin-bottom: 0.25rem; font-size: 1rem; }
+    .topic-card p { color: #666; font-size: 0.85rem; }
+    .posts-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+    .post-card {
+      background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+      text-decoration: none; color: #333; transition: transform 0.3s;
+    }
+    .post-card:hover { transform: translateY(-3px); box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+    .post-card h3 { margin-bottom: 0.75rem; font-size: 1.1rem; }
+    .post-card .meta { font-size: 0.85rem; color: #666; margin-bottom: 0.5rem; }
+    .post-card .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .tag { font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 20px; }
+    .tag-beginner { background: #d5f5e3; color: var(--beginner); }
+    .tag-intermediate { background: #fdedc7; color: var(--intermediate); }
+    .tag-advanced { background: #ebdef0; color: var(--advanced); }
+    footer {
+      background: var(--primary); color: white; padding: 2rem 0; text-align: center; margin-top: 4rem;
+    }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .nav-links { flex-direction: column; gap: 0.5rem; }
+      .path-selector { flex-direction: column; align-items: center; }
+      .path-card { width: 100%; max-width: 400px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-links">
+      <a href="/rootForAI/">AI Learning Platform</a>
+      <a href="#paths">Paths</a>
+      <a href="#topics">Topics</a>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="container">
+      <h1>AI Learning Platform</h1>
+      <p>Your pathway to mastering Artificial Intelligence with structured learning paths</p>
     </div>
   </div>
 
-  <div class="topics-grid" id="topics" style="margin-top: 3rem;">
-    <h2 style="margin-bottom: 1.5rem;">Explore Topics</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem;">
-      {% for topic in site.topics %}
-      <a href="{{ '/rootForAI/topics/' | relative_url }}{{ topic.id }}" class="topic-card" style="border-left-color: {{ topic.color }}; background: white; padding: 1rem; border-radius: 8px; text-align: center; text-decoration: none; color: #333;">
-        <h3 style="color: {{ topic.color }}; margin-bottom: 0.5rem;">{{ topic.title }}</h3>
-        <p style="color: #666; font-size: 0.85rem;">View all {{ topic.title }} articles</p>
+  <div class="container">
+    <div class="path-selector" id="paths">
+      <h2 style="margin: 0 0 1.5rem;">Choose Your Learning Path</h2>
+      <a href="/rootForAI/learning_paths/beginner" class="path-card">
+        <span class="icon">🌱</span>
+        <h3>Beginner Path</h3>
+        <p>Start your AI journey with fundamentals</p>
       </a>
-      {% endfor %}
+      <a href="/rootForAI/learning_paths/intermediate" class="path-card">
+        <span class="icon">🌿</span>
+        <h3>Intermediate Path</h3>
+        <p>Build on your knowledge with core concepts</p>
+      </a>
+      <a href="/rootForAI/learning_paths/advanced" class="path-card">
+        <span class="icon">🌳</span>
+        <h3>Advanced Path</h3>
+        <p>Master specialized AI techniques and applications</p>
+      </a>
+    </div>
+
+    <div class="topics-grid" id="topics" style="margin-top: 3rem;">
+      <h2 style="margin-bottom: 1.5rem;">Explore Topics</h2>
+      <a href="/rootForAI/topics/machine-learning" class="topic-card" style="border-left-color: #3498db;">
+        <h3 style="color: #3498db;">Machine Learning</h3>
+        <p>Algorithms and models</p>
+      </a>
+      <a href="/rootForAI/topics/deep-learning" class="topic-card" style="border-left-color: #2ecc71;">
+        <h3 style="color: #2ecc71;">Deep Learning</h3>
+        <p>Neural networks and more</p>
+      </a>
+      <a href="/rootForAI/topics/nlp" class="topic-card" style="border-left-color: #9b59b6;">
+        <h3 style="color: #9b59b6;">NLP</h3>
+        <p>Natural Language Processing</p>
+      </a>
+      <a href="/rootForAI/topics/computer-vision" class="topic-card" style="border-left-color: #e74c3c;">
+        <h3 style="color: #e74c3c;">Computer Vision</h3>
+        <p>Image and video understanding</p>
+      </a>
+      <a href="/rootForAI/topics/generative-ai" class="topic-card" style="border-left-color: #f1c40f;">
+        <h3 style="color: #f1c40f;">Generative AI</h3>
+        <p>Create new content</p>
+      </a>
+      <a href="/rootForAI/topics/ethics" class="topic-card" style="border-left-color: #34495e;">
+        <h3 style="color: #34495e;">AI Ethics</h3>
+        <p>Responsible AI development</p>
+      </a>
+    </div>
+
+    <div id="recent-posts" style="margin-top: 3rem;">
+      <h2 style="margin-bottom: 1.5rem;">Recent Posts</h2>
+      <div class="posts-list">
+        <a href="/rootForAI/posts/2025/12/01/introduction-to-ai.html" class="post-card">
+          <h3>Introduction to Artificial Intelligence</h3>
+          <div class="meta">Dec 1, 2025</div>
+          <p>What is Artificial Intelligence? Learn the fundamentals of AI and understand how it's transforming our world.</p>
+          <div class="tags">
+            <span class="tag tag-beginner">Beginner</span>
+            <span class="tag">AI</span>
+            <span class="tag">Fundamentals</span>
+          </div>
+        </a>
+        <a href="/rootForAI/posts/2025/12/05/machine-learning-basics.html" class="post-card">
+          <h3>Machine Learning Basics</h3>
+          <div class="meta">Dec 5, 2025</div>
+          <p>Learn the two main approaches to machine learning and when to use each one.</p>
+          <div class="tags">
+            <span class="tag tag-beginner">Beginner</span>
+            <span class="tag">ML</span>
+          </div>
+        </a>
+        <a href="/rootForAI/posts/2025/12/10/neural-networks.html" class="post-card">
+          <h3>Neural Networks Explained</h3>
+          <div class="meta">Dec 10, 2025</div>
+          <p>Dive into the world of neural networks and understand how they power modern AI.</p>
+          <div class="tags">
+            <span class="tag tag-intermediate">Intermediate</span>
+            <span class="tag">Deep Learning</span>
+          </div>
+        </a>
+      </div>
+      <a href="/rootForAI/posts" style="display: inline-block; margin-top: 1.5rem; color: var(--accent); text-decoration: none;">View all posts &rarr;</a>
     </div>
   </div>
 
-  <div id="recent-posts" style="margin-top: 3rem;">
-    <h2 style="margin-bottom: 1.5rem;">Recent Posts</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;">
-      {% for post in site.posts limit: 6 %}
-      <a href="{{ post.url | relative_url }}" class="post-card" style="background: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-decoration: none; color: #333; transition: transform 0.3s;">
-        <h3 style="margin-bottom: 0.75rem;">{{ post.title }}</h3>
-        <div style="font-size: 0.85rem; color: #666; margin-bottom: 1rem;">
-          <span>{{ post.date | date: "%B %-d, %Y" }}</span>
-          {% if post.path_type %}
-          <span style="margin-left: 0.5rem; padding: 0.25rem 0.75rem; border-radius: 20px; background: #ebdef0; color: #8e44ad; font-size: 0.75rem;">{{ post.path_type | capitalize }}</span>
-          {% endif %}
-        </div>
-        <p>{{ post.excerpt | strip_html | truncate: 150 }}</p>
-        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem;">
-          {% for tag in post.categories limit: 3 %}
-          <span style="font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 20px; background: #ecf0f1; color: #34495e;">{{ tag }}</span>
-          {% endfor %}
-        </div>
-      </a>
-      {% endfor %}
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 AI Learning Platform</p>
+      <p style="margin-top: 0.5rem; opacity: 0.7;">Powered by GitHub Pages</p>
     </div>
-    <a href="/rootForAI/posts" style="display: inline-block; margin-top: 1.5rem; color: #3498db; text-decoration: none;">View all posts &rarr;</a>
-  </div>
-</div>
-
-<style>
-  :root {
-    --primary: #2c3e50;
-    --accent: #3498db;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background: #f8f9fa;
-  }
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-  header {
-    background: var(--primary); color: white; padding: 1rem 0;
-  }
-  .nav-links { display: flex; justify-content: center; gap: 2rem; }
-  .nav-links a { color: white; text-decoration: none; }
-  .nav-links a:hover { color: var(--accent); }
-  .hero {
-    background: linear-gradient(135deg, var(--primary), #34495e);
-    color: white; padding: 4rem 0; text-align: center;
-  }
-  .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-  .hero p { font-size: 1.2rem; opacity: 0.9; }
-  .path-selector { display: flex; justify-content: center; gap: 1.5rem; margin: 2rem 0; flex-wrap: wrap; }
-  .path-card {
-    background: white; padding: 2rem; border-radius: 12px; text-align: center;
-    flex: 1; min-width: 280px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    transition: transform 0.3s; text-decoration: none; color: #333;
-  }
-  .path-card:hover { transform: translateY(-5px); }
-  .path-card .icon { font-size: 3.5rem; margin-bottom: 1rem; display: block; }
-  .path-card h3 { margin-bottom: 0.75rem; font-size: 1.25rem; }
-  .path-card p { color: #666; font-size: 0.95rem; }
-  .topic-card:hover { background: #f1f8ff; transform: translateY(-2px); }
-  .posts-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
-  .post-card:hover { transform: translateY(-3px); box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
-  footer {
-    background: var(--primary); color: white; padding: 2rem 0; text-align: center; margin-top: 4rem;
-  }
-  .breadcrumb { padding: 1rem 0; color: #666; font-size: 0.9rem; }
-  .breadcrumb a { color: var(--accent); text-decoration: none; }
-  .tag { padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.75rem; }
-  @media (max-width: 768px) {
-    .hero h1 { font-size: 2rem; }
-    .nav-links { flex-direction: column; gap: 0.5rem; }
-    .path-selector { flex-direction: column; align-items: center; }
-    .path-card { width: 100%; max-width: 400px; }
-  }
-</style>
+  </footer>
+</body>
+</html>
