@@ -5,9 +5,9 @@ theme: minima
 plugins:
   - jekyll-feed
 
-# URL settings (update with your actual GitHub username)
-url: "https://github.com/msmariswamy/ai-website"
-baseurl: "/ai-website"
+# URL settings for GitHub Pages
+url: "https://msmariswamy.github.io"
+baseurl: "/rootForAI"
 
 # Learning paths
 learning_paths:
@@ -52,6 +52,5 @@ exclude:
   - node_modules
   - vendor
   - .git
-  - .github
-  - CNAME
+  - .claude
   - PROJECT.md
