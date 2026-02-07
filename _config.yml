@@ -6,7 +6,7 @@ plugins:
   - jekyll-feed
 
 # URL settings (update with your actual GitHub username)
-url: "https://github.com/yourusername/ai-website"
+url: "https://github.com/msmariswamy/ai-website"
 baseurl: "/ai-website"
 
 # Learning paths
