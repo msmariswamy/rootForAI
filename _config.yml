@@ -1,0 +1,57 @@
+# Site settings
+title: AI Learning Platform
+description: Your pathway to mastering Artificial Intelligence
+theme: minima
+plugins:
+  - jekyll-feed
+
+# URL settings (update with your actual GitHub username)
+url: "https://github.com/yourusername/ai-website"
+baseurl: "/ai-website"
+
+# Learning paths
+learning_paths:
+  - id: beginner
+    title: Beginner Path
+    description: Start your AI journey with fundamentals
+    icon: 🌱
+  - id: intermediate
+    title: Intermediate Path
+    description: Build on your knowledge with core concepts
+    icon: 🌿
+  - id: advanced
+    title: Advanced Path
+    description: Master specialized AI techniques and applications
+    icon: 🌳
+
+# Topics
+topics:
+  - id: machine-learning
+    title: Machine Learning
+    color: "#3498db"
+  - id: deep-learning
+    title: Deep Learning
+    color: "#2ecc71"
+  - id: nlp
+    title: Natural Language Processing
+    color: "#9b59b6"
+  - id: computer-vision
+    title: Computer Vision
+    color: "#e74c3c"
+  - id: generative-ai
+    title: Generative AI
+    color: "#f1c40f"
+  - id: ethics
+    title: AI Ethics
+    color: "#34495e"
+
+# Build settings
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - .github
+  - CNAME
+  - PROJECT.md
